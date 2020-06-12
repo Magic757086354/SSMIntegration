@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--sql语句保存在对应的局部配置文件中-->
+<!--namespace:命名空间 其值为某一个dao层内的具体路径-->
+<mapper namespace="com.zsp.study.dao.AccountDao">
+
+    <!--
+    insert标签：只能存放插入语句
+    id属性：给标签取一个唯一的标识符，在整个配置文件中id值必须唯一，其值与dao层类中的方法名保持一致
+    parameterType:指定参数类型
+    resultType：指定当前sql查询语句返回的数据类型。类型不是为sql语句的最终类型，而是某一条数据的类型
+    -->
+    <select id="findAll" resultType="com.zsp.study.domain.Account">
+        select * from account
+    </select>
+
+    <insert id="saveAccount" parameterType="com.zsp.study.domain.Account">
+        insert into account (name,money) values(#{name},#{money})
+    </insert>
+</mapper>
